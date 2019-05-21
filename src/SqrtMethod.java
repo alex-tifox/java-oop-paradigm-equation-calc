@@ -1,6 +1,7 @@
 import com.sun.xml.internal.ws.policy.ComplexAssertion;
 import com.vm.jcomplex.Complex;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -9,7 +10,8 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class SqrtMethod extends Equation {
-    protected double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
+    private double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
+
     SqrtMethod(){}
 
     @Override
@@ -173,13 +175,19 @@ public class SqrtMethod extends Equation {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException e) {}
+
+        sr = addEquationRoot()[0];
+        su = addEquationRoot()[1];
+        rr = minusEquationRoot()[0];
+        ru = minusEquationRoot()[1];
+
         System.out.print(String.format("Sr=%.2f\n", sr));
         System.out.print(String.format("Rr=%.2f\n", rr));
 
-        if (addEquationRoot()) {
+        if (addEquationRoot()[2] == 1) {
             System.out.print(String.format("\nSu=%.2f\n", su));
         }
-        if (minusEquationRoot()) {
+        if (minusEquationRoot()[2] == 0) {
             System.out.print(String.format("Ru=%.2f\n", ru));
         }
 
@@ -195,6 +203,7 @@ public class SqrtMethod extends Equation {
             v2Element2 *= outputData.elementAt(i).getImaginary();
             v2.setElementAt(v2Element2, 0);
         }
+        System.out.println("outputData size= "+ outputData.size());
         System.out.println("Iloczyn liczb zespolonych: "+v2.firstElement() +" " +v2.lastElement());
     }
 
@@ -206,66 +215,6 @@ public class SqrtMethod extends Equation {
     @Override
     public double getDelta() {
         return delta;
-    }
-
-    @Override
-    public boolean addEquationRoot() {
-        boolean flag = false;
-        sr = 0;
-        su = 0;
-
-        for (Complex element : outputData) {
-            try {
-                if (element.getReal() != 0)
-                    sr += element.getReal();
-                if (element.getImaginary() != 0) {
-                    su += element.getImaginary();
-                    flag = true;
-                }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                break;
-            }
-        }
-
-        return flag;
-    }
-
-    @Override
-    public boolean minusEquationRoot() {
-        boolean flag = false;
-        rr = 0;
-        ru = 0;
-        try {
-            if (outputData.elementAt(0).getReal() != 0)
-                rr -= outputData.elementAt(0).getReal();
-
-            if (outputData.elementAt(1).getReal() != 0)
-                rr -= outputData.elementAt(1).getReal();
-
-            if (outputData.elementAt(2).getReal() != 0)
-                rr -= outputData.elementAt(2).getReal();
-
-            if (outputData.elementAt(3).getReal() != 0)
-                rr -= outputData.elementAt(3).getReal();
-
-            if (outputData.elementAt(0).getImaginary() != 0) {
-                ru -= outputData.elementAt(0).getImaginary();
-                flag = true;
-            }
-            if (outputData.elementAt(1).getImaginary() != 0) {
-                ru -= outputData.elementAt(1).getImaginary();
-                flag = true;
-            }
-            if (outputData.elementAt(2).getImaginary() != 0) {
-                ru -= outputData.elementAt(2).getImaginary();
-                flag = true;
-            }
-            if (outputData.elementAt(3).getImaginary() != 0) {
-                ru -= outputData.elementAt(3).getImaginary();
-                flag = true;
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {}
-        return flag;
     }
 
     public static void main(String... args) {

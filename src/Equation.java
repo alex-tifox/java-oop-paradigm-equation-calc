@@ -55,6 +55,48 @@ public abstract class Equation {
     public abstract double getErr();
     public abstract double getDelta();
 
-    public abstract boolean addEquationRoot();
-    public abstract boolean minusEquationRoot();
+    public double[] addEquationRoot() {
+        boolean flag = false;
+        int sr = 0;
+        int su = 0;
+
+        for (Complex element : outputData) {
+            try {
+                if (element.getReal() != 0)
+                    sr += element.getReal();
+                if (element.getImaginary() != 0) {
+                    su += element.getImaginary();
+                    flag = true;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {
+            }
+        }
+
+        if (flag)
+            return new double[]{sr, su, 1};
+        else
+            return new double[]{sr, su, 0};
+    }
+
+    public double[] minusEquationRoot() {
+        boolean flag = false;
+        int rr = 0;
+        int ru = 0;
+        for (Complex element : outputData) {
+            try {
+                if (element.getReal() != 0)
+                    rr -= element.getReal();
+                if (element.getImaginary() != 0) {
+                    ru -= element.getImaginary();
+                    flag = true;
+                }
+            } catch (ArrayIndexOutOfBoundsException ignored) {
+            }
+        }
+
+        if (flag)
+            return new double[]{rr, ru, 1};
+        else
+            return new double[]{rr, ru, 0};
+    };
 }
