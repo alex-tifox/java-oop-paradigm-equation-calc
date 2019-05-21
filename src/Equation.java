@@ -1,4 +1,3 @@
-
 import com.vm.jcomplex.Complex;
 
 import java.util.Scanner;
@@ -61,14 +60,11 @@ public abstract class Equation {
         int su = 0;
 
         for (Complex element : outputData) {
-            try {
-                if (element.getReal() != 0)
-                    sr += element.getReal();
-                if (element.getImaginary() != 0) {
-                    su += element.getImaginary();
-                    flag = true;
-                }
-            } catch (ArrayIndexOutOfBoundsException ignored) {
+            if (element.getReal() != 0)
+                sr += element.getReal();
+            if (element.getImaginary() != 0) {
+                su += element.getImaginary();
+                flag = true;
             }
         }
 
@@ -83,14 +79,11 @@ public abstract class Equation {
         int rr = 0;
         int ru = 0;
         for (Complex element : outputData) {
-            try {
-                if (element.getReal() != 0)
-                    rr -= element.getReal();
-                if (element.getImaginary() != 0) {
-                    ru -= element.getImaginary();
-                    flag = true;
-                }
-            } catch (ArrayIndexOutOfBoundsException ignored) {
+            if (element.getReal() != 0)
+                rr -= element.getReal();
+            if (element.getImaginary() != 0) {
+                ru -= element.getImaginary();
+                flag = true;
             }
         }
 
@@ -98,5 +91,5 @@ public abstract class Equation {
             return new double[]{rr, ru, 1};
         else
             return new double[]{rr, ru, 0};
-    };
+    }
 }

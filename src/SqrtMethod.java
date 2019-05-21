@@ -1,7 +1,5 @@
-import com.sun.xml.internal.ws.policy.ComplexAssertion;
 import com.vm.jcomplex.Complex;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -228,6 +226,5 @@ public class SqrtMethod extends Equation {
         sqrtMethod.delta = sqrtMethod.calculateDelta();
         sqrtMethod.calculateRoots();
         sqrtMethod.printResult();
-
     }
 }
