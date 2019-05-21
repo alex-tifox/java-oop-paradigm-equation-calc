@@ -111,7 +111,7 @@ public class SqrtMethod extends Equation {
                 }
             }
         }
-        System.out.print(String.format("\n"));
+        //0System.out.print(String.format("\n"));
         if (outputData.elementAt(1).getReal() == 0) {
             System.out.print(String.format("%.2f", outputData.elementAt(1).getReal()));
             if (outputData.elementAt(1).getImaginary() == 0) {
@@ -130,57 +130,57 @@ public class SqrtMethod extends Equation {
                 }
             }
         }
+        //System.out.print(String.format("\n"));
+        try {
+            if (outputData.elementAt(2).getReal() == 0) {
+                System.out.print(String.format("%.2f", outputData.elementAt(2).getReal()));
+                if (outputData.elementAt(2).getImaginary() == 0) {
+                    if (outputData.elementAt(2).getImaginary() > 0) {
+                        System.out.print(String.format("+%.2fi", outputData.elementAt(2).getImaginary()));
+                    } else if (outputData.elementAt(2).getImaginary() < 0) {
+                        System.out.print(String.format("+(%.2f)i", outputData.elementAt(2).getImaginary()));
+                    }
+                }
+            } else {
+                if (outputData.elementAt(2).getImaginary() == 0) {
+                    if (outputData.elementAt(2).getImaginary() > 0) {
+                        System.out.print(String.format("%.2fi", outputData.elementAt(2).getImaginary()));
+                    } else if (outputData.elementAt(2).getImaginary() < 0) {
+                        System.out.print(String.format("(%.2f)i", outputData.elementAt(2).getImaginary()));
+                    }
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {}
+
         System.out.print(String.format("\n"));
-        if (outputData.elementAt(2).getReal() == 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(2).getReal()));
-            if (outputData.elementAt(2).getImaginary() == 0) {
-                if (outputData.elementAt(2).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(2).getImaginary()));
+        try {
+            if (outputData.elementAt(3).getReal() == 0) {
+                System.out.print(String.format("%.2f", outputData.elementAt(3).getReal()));
+                if (outputData.elementAt(3).getImaginary() == 0) {
+                    if (outputData.elementAt(3).getImaginary() > 0) {
+                        System.out.print(String.format("+%.2fi", outputData.elementAt(3).getImaginary()));
+                    } else if (outputData.elementAt(3).getImaginary() < 0) {
+                        System.out.print(String.format("+(%.2f)i", outputData.elementAt(3).getImaginary()));
+                    }
                 }
-                else if (outputData.elementAt(2).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(2).getImaginary()));
-                }
-            }
-        } else {
-            if (outputData.elementAt(2).getImaginary() == 0) {
-                if (outputData.elementAt(2).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(2).getImaginary()));
-                } else if (outputData.elementAt(2).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(2).getImaginary()));
-                }
-            }
-        }
-        System.out.print(String.format("\n"));
-        if (outputData.elementAt(3).getReal() == 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(3).getReal()));
-            if (outputData.elementAt(3).getImaginary() == 0) {
-                if (outputData.elementAt(3).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(3).getImaginary()));
-                }
-                else
-                if (outputData.elementAt(3).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(3).getImaginary()));
+            } else {
+                if (outputData.elementAt(3).getImaginary() == 0) {
+                    if (outputData.elementAt(3).getImaginary() > 0) {
+                        System.out.print(String.format("%.2fi", outputData.elementAt(3).getImaginary()));
+                    } else if (outputData.elementAt(3).getImaginary() < 0) {
+                        System.out.print(String.format("(%.2f)i", outputData.elementAt(3).getImaginary()));
+                    }
                 }
             }
-        } else {
-            if (outputData.elementAt(3).getImaginary() == 0) {
-                if (outputData.elementAt(3).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(3).getImaginary()));
-                } else if (outputData.elementAt(3).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(3).getImaginary()));
-                }
-            }
-        }
-        System.out.print(String.format("\n"));
-        System.out.print(String.format("\nSr=%.2f\n", sr));
+        } catch (ArrayIndexOutOfBoundsException e) {}
+        System.out.print(String.format("Sr=%.2f\n", sr));
         System.out.print(String.format("Rr=%.2f\n", rr));
-        //soS)tring.format\nSr=%.2f\n", sr);
-        //soS)tring.formatRr=%.2f\n", rr);
+
         if (addEquationRoot()) {
-            System.out.println(String.format("\nSu=%.2f\n", su));
+            System.out.print(String.format("\nSu=%.2f\n", su));
         }
         if (minusEquationRoot()) {
-            System.out.println(String.format("Ru=%.2f\n", ru));
+            System.out.print(String.format("Ru=%.2f\n", ru));
         }
 
         Vector<Double> v2 = new Vector<>();
@@ -210,12 +210,62 @@ public class SqrtMethod extends Equation {
 
     @Override
     public boolean addEquationRoot() {
-        return false;
+        boolean flag = false;
+        sr = 0;
+        su = 0;
+
+        for (Complex element : outputData) {
+            try {
+                if (element.getReal() != 0)
+                    sr += element.getReal();
+                if (element.getImaginary() != 0) {
+                    su += element.getImaginary();
+                    flag = true;
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                break;
+            }
+        }
+
+        return flag;
     }
 
     @Override
     public boolean minusEquationRoot() {
-        return false;
+        boolean flag = false;
+        rr = 0;
+        ru = 0;
+        try {
+            if (outputData.elementAt(0).getReal() != 0)
+                rr -= outputData.elementAt(0).getReal();
+
+            if (outputData.elementAt(1).getReal() != 0)
+                rr -= outputData.elementAt(1).getReal();
+
+            if (outputData.elementAt(2).getReal() != 0)
+                rr -= outputData.elementAt(2).getReal();
+
+            if (outputData.elementAt(3).getReal() != 0)
+                rr -= outputData.elementAt(3).getReal();
+
+            if (outputData.elementAt(0).getImaginary() != 0) {
+                ru -= outputData.elementAt(0).getImaginary();
+                flag = true;
+            }
+            if (outputData.elementAt(1).getImaginary() != 0) {
+                ru -= outputData.elementAt(1).getImaginary();
+                flag = true;
+            }
+            if (outputData.elementAt(2).getImaginary() != 0) {
+                ru -= outputData.elementAt(2).getImaginary();
+                flag = true;
+            }
+            if (outputData.elementAt(3).getImaginary() != 0) {
+                ru -= outputData.elementAt(3).getImaginary();
+                flag = true;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {}
+        return flag;
     }
 
     public static void main(String... args) {
