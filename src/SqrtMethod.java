@@ -8,7 +8,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class SqrtMethod extends Equation {
-    private double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
+    double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
 
     SqrtMethod(){}
 
