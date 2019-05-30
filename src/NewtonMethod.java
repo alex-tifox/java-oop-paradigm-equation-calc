@@ -1,11 +1,9 @@
 import com.vm.jcomplex.Complex;
 
-import java.util.Vector;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-public class NewtonMethod extends Equation {
+public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> {
      double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
 
      private double newtonSqrt(double d, double err) {
@@ -110,112 +108,6 @@ public class NewtonMethod extends Equation {
     }
 
     @Override
-    public void printResult() {
-        System.out.print("\nDelta=%.2f" + getDelta());
-        double pdelta = (abs(getDelta()));
-        System.out.print(String.format("Pdelta=%.2f", pdelta));
-        if (outputData.elementAt(0).getReal() != 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(0).getReal()));
-            if (outputData.elementAt(0).getImaginary() != 0) {
-                if (outputData.elementAt(0).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(0).getImaginary()));
-                } else if (outputData.elementAt(0).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(0).getImaginary()));
-                }
-            }
-        } else {
-            if (outputData.elementAt(0).getImaginary() != 0) {
-                if (outputData.elementAt(0).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(0).getImaginary()));
-                } else if (outputData.elementAt(0).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(0).getImaginary()));
-                }
-            }
-        }
-        System.out.print("\n");
-        if (outputData.elementAt(1).getReal() != 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(1).getReal()));
-            if (outputData.elementAt(1).getImaginary() != 0) {
-                if (outputData.elementAt(1).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(1).getImaginary()));
-                } else if (outputData.elementAt(1).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(1).getImaginary()));
-                }
-            }
-        } else {
-            if (outputData.elementAt(1).getImaginary() != 0) {
-                if (outputData.elementAt(1).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(1).getImaginary()));
-                } else if (outputData.elementAt(1).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(1).getImaginary()));
-                }
-            }
-        }
-        System.out.print("\n");
-        if (outputData.elementAt(2).getReal() != 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(2).getReal()));
-            if (outputData.elementAt(2).getImaginary() != 0) {
-                if (outputData.elementAt(2).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(2).getImaginary()));
-                } else if (outputData.elementAt(2).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(2).getImaginary()));
-                }
-            }
-        } else {
-            if (outputData.elementAt(2).getImaginary() != 0) {
-                if (outputData.elementAt(2).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(2).getImaginary()));
-                } else if (outputData.elementAt(2).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(2).getImaginary()));
-                }
-            }
-        }
-        System.out.print("\n");
-        if (outputData.elementAt(3).getReal() != 0) {
-            System.out.print(String.format("%.2f", outputData.elementAt(3).getReal()));
-            if (outputData.elementAt(3).getImaginary() != 0) {
-                if (outputData.elementAt(3).getImaginary() > 0) {
-                    System.out.print(String.format("+%.2fi", outputData.elementAt(3).getImaginary()));
-                } else if (outputData.elementAt(3).getImaginary() < 0) {
-                    System.out.print(String.format("+(%.2f)i", outputData.elementAt(3).getImaginary()));
-                }
-            }
-        } else {
-            if (outputData.elementAt(3).getImaginary() != 0) {
-                if (outputData.elementAt(3).getImaginary() > 0) {
-                    System.out.print(String.format("%.2fi", outputData.elementAt(3).getImaginary()));
-                } else if (outputData.elementAt(3).getImaginary() < 0) {
-                    System.out.print(String.format("(%.2f)i", outputData.elementAt(3).getImaginary()));
-                }
-            }
-        }
-        System.out.print("\n");
-        System.out.print(String.format("\nSr=%.2f\n", sr));
-        System.out.print(String.format("Rr=%.2f\n", rr));
-
-        if (addEquationRoot()[2] == 1) {
-            System.out.print(String.format("\nSu=%.2f\n", su));
-        }
-        if (minusEquationRoot()[2] == 0) {
-            System.out.print(String.format("Ru=%.2f\n", ru));
-        }
-
-        Vector<Double> v2 = new Vector<>();
-        Double v2Element1 = 1.0;
-        Double v2Element2 = 1.0;
-        v2.add(1.0);
-        v2.add(1.0);
-
-        for (int i = 0; i < outputData.size(); i++) {
-            v2Element1 *= outputData.elementAt(i).getReal();
-            v2.setElementAt(v2Element1, 0);
-            v2Element2 *= outputData.elementAt(i).getImaginary();
-            v2.setElementAt(v2Element2, 0);
-        }
-        System.out.println("Iloczyn liczb zespolonych: " + v2.firstElement() + " " +v2.lastElement());
-    }
-
-    @Override
     public double getErr() {
         return err;
     }
@@ -223,5 +115,45 @@ public class NewtonMethod extends Equation {
     @Override
     public double getDelta() {
         return delta;
+    }
+
+    @Override
+    public double getSr() {
+        return sr;
+    }
+
+    @Override
+    public double getRr() {
+        return rr;
+    }
+
+    @Override
+    public double getSu() {
+        return su;
+    }
+
+    @Override
+    public double getRu() {
+        return ru;
+    }
+
+    @Override
+    public void setSr(double sr) {
+        this.sr = sr;
+    }
+
+    @Override
+    public void setRr(double rr) {
+        this.rr = rr;
+    }
+
+    @Override
+    public void setSu(double su) {
+        this.su = su;
+    }
+
+    @Override
+    public void setRu(double ru) {
+        this.ru = ru;
     }
 }
