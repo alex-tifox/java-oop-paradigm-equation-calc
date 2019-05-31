@@ -1,8 +1,5 @@
 import com.vm.jcomplex.Complex;
 
-import java.util.Scanner;
-import java.util.Vector;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;

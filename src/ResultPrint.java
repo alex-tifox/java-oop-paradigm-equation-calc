@@ -2,8 +2,6 @@ import com.vm.jcomplex.Complex;
 
 import java.util.Vector;
 
-import static java.lang.Math.abs;
-
 public interface ResultPrint<T extends Equation> {
 
     default void printResult(T equationMethod) {

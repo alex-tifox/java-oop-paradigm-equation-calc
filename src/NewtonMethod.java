@@ -2,7 +2,6 @@ import com.vm.jcomplex.Complex;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
 
 public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> {
      double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
