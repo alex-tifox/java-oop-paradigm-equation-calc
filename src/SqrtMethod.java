@@ -18,19 +18,23 @@ public class SqrtMethod extends Equation implements ResultPrint<SqrtMethod> {
         double t1, t2, t1r, t2r, t1u, t2u;
 
         pdelta = sqrt(abs(delta));
-        if (inputData.elementAt(0) == 0)
+        if (inputData.elementAt(0) == 0) {
+            delta = 0 - 4 * inputData.elementAt(1) * inputData.elementAt(2);
+            pdelta = sqrt(abs(delta));
+
             if (delta < 0) {
-                outputData.add(new Complex(1.0*(-1) * 0/ (2 * inputData.elementAt(1)),
-                        (-1.0) * pdelta / ((1.0) * (2* inputData.elementAt(1)))));
-                outputData.add(new Complex((1.0)*(-1)*0/(2*inputData.elementAt(1) / ((1.0)*(2*inputData.elementAt(1)) ))));
+                outputData.add(new Complex(1.0 * (-1) * 0 / (2 * inputData.elementAt(1)),
+                        (-1.0) * pdelta / ((1.0) * (2 * inputData.elementAt(1)))));
+                outputData.add(new Complex((1.0) * (-1) * 0 / (2 * inputData.elementAt(1)),
+                        pdelta / ((1.0) * (2 * inputData.elementAt(1)))));
             } else if (delta > 0) {
                 outputData.add(new Complex(inputData.elementAt(0) - pdelta / (2.0 * inputData.elementAt(1)), 0.0));
                 outputData.add(new Complex(inputData.elementAt(0) + pdelta / (2.0 * inputData.elementAt(1)), 0));
             } else {
-                Complex complex = new Complex(inputData.elementAt(0) +1e-5 / (2 * inputData.elementAt(1)), 0);
+                Complex complex = new Complex(inputData.elementAt(0) + 1e-5 / (2 * inputData.elementAt(1)), 0);
                 outputData.add(complex);
             }
-        else
+        }else{
 
             if (delta > 0) {
                 t1 = ((-1.0) * inputData.elementAt(1) - pdelta) / (2.0 * inputData.elementAt(0));
@@ -50,25 +54,26 @@ public class SqrtMethod extends Equation implements ResultPrint<SqrtMethod> {
                 outputData.add(new Complex((-1.0)*sqrt((sqrt(pow(t2r, 2) + pow(t2u, 2)) + t2r) / 2) ,(-1.0)*sqrt((sqrt(pow(t2r, 2) + pow(t2u, 2)) - t2r) / 2)));
 
             } else {
-                t1r = ((-1.0)* inputData.elementAt(1)) / (2.0 *  inputData.elementAt(0));
+                t1r = ((-1.0) * inputData.elementAt(1)) / (2.0 * inputData.elementAt(0));
                 if (t1r >= 0) {
-                    outputData.add(new Complex(sqrt(t1r),0));
-                    outputData.add(new Complex((-1.0)*sqrt(t1r),0));
-                    outputData.add(new Complex(sqrt(t1r),0));
-                    outputData.add(new Complex((-1.0)*sqrt(t1r),0));
+                    outputData.add(new Complex(sqrt(t1r), 0));
+                    outputData.add(new Complex((-1.0) * sqrt(t1r), 0));
+                    outputData.add(new Complex(sqrt(t1r), 0));
+                    outputData.add(new Complex((-1.0) * sqrt(t1r), 0));
                 } else {
-                    x1u = sqrt(-1.0*t1r);
-                    outputData.add(new Complex(0 , sqrt(-1.0*t1r)));
+                    x1u = sqrt(-1.0 * t1r);
+                    outputData.add(new Complex(0, sqrt(-1.0 * t1r)));
 
-                    x2u = (-1.0)*sqrt(-1.0*t1r);
-                    outputData.add(new Complex(0 , (-1.0)*sqrt(-1.0*t1r)));
+                    x2u = (-1.0) * sqrt(-1.0 * t1r);
+                    outputData.add(new Complex(0, (-1.0) * sqrt(-1.0 * t1r)));
 
-                    x3u = sqrt(-1.0*t1r);
-                    outputData.add(new Complex(0 , sqrt(-1.0*t1r)));
+                    x3u = sqrt(-1.0 * t1r);
+                    outputData.add(new Complex(0, sqrt(-1.0 * t1r)));
 
-                    x4u = (-1.0)*sqrt(-1.0*t1r);
-                    outputData.add(new Complex(0 , (-1.0)*sqrt(-1.0*t1r)));
+                    x4u = (-1.0) * sqrt(-1.0 * t1r);
+                    outputData.add(new Complex(0, (-1.0) * sqrt(-1.0 * t1r)));
                 }
+            }
         }
     }
 

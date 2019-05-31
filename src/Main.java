@@ -24,6 +24,14 @@ public class Main {
             newtonMethod.printEquation();
             newtonMethod.calculateRoots();
             newtonMethod.printResult(newtonMethod);
+        } else {
+            HeronMethod heronMethod = new HeronMethod();
+            heronMethod.setErr(err);
+            heronMethod.setTab();
+            heronMethod.delta = heronMethod.calculateDelta();
+            heronMethod.printEquation();
+            heronMethod.calculateRoots();
+            heronMethod.printResult(heronMethod);
         }
     }
 }

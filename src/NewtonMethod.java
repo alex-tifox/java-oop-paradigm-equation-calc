@@ -35,8 +35,6 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
     public void calculateRoots() {
         double t1, t2, t1r, t2r, t1u, t2u;
 
-
-
         //pdelta = newtonSqrt(abs(delta), err);
         pdelta = newtonSqrt(abs(delta), err);
         if (inputData.elementAt(0) == 0) {
