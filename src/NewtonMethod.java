@@ -2,6 +2,7 @@ import com.vm.jcomplex.Complex;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> {
      double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
@@ -14,12 +15,12 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
         if (d == 0)
             return 0;
 
-        double squareRoot = 1.;
+        double squareRoot = 1.0;
         double b = d;
 
         double a;
         for (a = abs(squareRoot - b); a >= err; a = abs(squareRoot - b)) {
-            squareRoot = (squareRoot + b) / 2.;
+            squareRoot = (squareRoot + b) / 2.0;
             b = d / squareRoot;
         }
         return squareRoot;
@@ -34,13 +35,14 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
     public void calculateRoots() {
         double t1, t2, t1r, t2r, t1u, t2u;
 
-        double err = getErr();
 
+
+        //pdelta = newtonSqrt(abs(delta), err);
         pdelta = newtonSqrt(abs(delta), err);
-
         if (inputData.elementAt(0) == 0) {
             delta = 0 - 4 * inputData.elementAt(1)* inputData.elementAt(2);
             pdelta = newtonSqrt(abs(delta), err);
+
             if (delta < 0) {
                 outputData.add(new Complex((1.0)*(-1) * 0 / (2 * inputData.elementAt(1)),(-1.0)*pdelta / ((1.0) * (2 * inputData.elementAt(1)))));
                 outputData.add(new Complex((1.0)*(-1) * 0 / (2 * inputData.elementAt(1)),pdelta / ((1.0) * (2 * inputData.elementAt(1))) ));
@@ -107,7 +109,7 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
         }
     }
 
-    @Override
+
     public double getErr() {
         return err;
     }
@@ -115,6 +117,11 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
     @Override
     public double getDelta() {
         return delta;
+    }
+
+    @Override
+    public double getPdelta(){
+        return pdelta;
     }
 
     @Override

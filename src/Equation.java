@@ -51,16 +51,6 @@ public abstract class Equation {
     public abstract void calculateRoots();
 
 
-    public abstract double getErr();
-    public abstract double getDelta();
-    public abstract double getSr();
-    public abstract double getRr();
-    public abstract double getSu();
-    public abstract double getRu();
-    public abstract void setSr(double sr);
-    public abstract void setRr(double rr);
-    public abstract void setSu(double su);
-    public abstract void setRu(double ru);
 
     protected double[] addEquationRoot() {
         boolean flag = false;
@@ -100,4 +90,17 @@ public abstract class Equation {
         else
             return new double[]{rr, ru, 0};
     }
+
+    public abstract double getPdelta();
+    public abstract double getDelta();
+
+    public abstract double getSr();
+    public abstract double getRr();
+    public abstract double getSu();
+    public abstract double getRu();
+
+    public abstract void setSr(double sr);
+    public abstract void setRr(double rr);
+    public abstract void setSu(double su);
+    public abstract void setRu(double ru);
 }

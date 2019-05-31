@@ -87,7 +87,6 @@ public class SqrtMethod extends Equation implements ResultPrint<SqrtMethod> {
         this.err = err;
     }
 
-    @Override
     public double getErr() {
         return err;
     }
@@ -96,57 +95,40 @@ public class SqrtMethod extends Equation implements ResultPrint<SqrtMethod> {
     public double getDelta() {
         return delta;
     }
-
+    @Override
+    public double getPdelta(){
+        return pdelta;
+    }
     @Override
     public double getSr() {
         return sr;
     }
-
     @Override
     public double getRr() {
         return rr;
     }
-
     @Override
     public double getSu() {
         return su;
     }
-
     @Override
     public double getRu() {
         return ru;
     }
-
     @Override
     public void setSr(double sr) {
         this.sr = sr;
     }
-
     @Override
     public void setRr(double rr) {
         this.rr = rr;
     }
-
     @Override
     public void setSu(double su) {
         this.su = su;
     }
-
     @Override
     public void setRu(double ru) {
         this.ru = ru;
-    }
-
-    public static void main(String... args) {
-        SqrtMethod sqrtMethod = new SqrtMethod();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter err");
-        sqrtMethod.setErr(scanner.nextDouble());
-
-        sqrtMethod.setTab();
-        sqrtMethod.delta = sqrtMethod.calculateDelta();
-        sqrtMethod.printEquation();
-        sqrtMethod.calculateRoots();
-        sqrtMethod.printResult(sqrtMethod);
     }
 }

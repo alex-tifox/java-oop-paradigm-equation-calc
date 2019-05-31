@@ -8,7 +8,7 @@ public interface ResultPrint<T extends Equation> {
 
     default void printResult(T equationMethod) {
         System.out.print(String.format("\nDelta=%.2f\n", equationMethod.getDelta()));
-        double pdelta = abs(equationMethod.getDelta());
+        double pdelta = equationMethod.getPdelta();
         System.out.print(String.format("Pdelta=%.2f\n", pdelta));
         if (equationMethod.outputData.elementAt(0).getReal() != 0) {
             System.out.print(String.format("%.2f", equationMethod.outputData.elementAt(0).getReal()));
