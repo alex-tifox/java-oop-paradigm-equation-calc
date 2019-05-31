@@ -6,6 +6,11 @@ import static java.lang.Math.pow;
 public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> {
      double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
 
+    @Override
+    public double getSqrt(double d, double err) {
+        return 0;
+    }
+
      private double newtonSqrt(double d, double err) {
 
         if (d < 0)
@@ -34,7 +39,6 @@ public class NewtonMethod extends Equation implements ResultPrint<NewtonMethod> 
     public void calculateRoots() {
         double t1, t2, t1r, t2r, t1u, t2u;
 
-        //pdelta = newtonSqrt(abs(delta), err);
         pdelta = newtonSqrt(abs(delta), err);
         if (inputData.elementAt(0) == 0) {
             delta = 0 - 4 * inputData.elementAt(1)* inputData.elementAt(2);

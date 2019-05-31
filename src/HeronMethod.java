@@ -6,10 +6,15 @@ import static java.lang.Math.pow;
 public class HeronMethod extends Equation implements ResultPrint<HeronMethod> {
     double err, delta, pdelta, x1r, x2r, x3r, x4r, x1u, x2u, x3u, x4u, su, sr, rr, ru, mr, mu;
 
+    @Override
+    public double getSqrt(double d, double err) {
+        return 0;
+    }
+
     double heronSqrt(double d, double err) {
-        if (d < 0) {
+        if (d < 0)
             d = d * (-1);
-        }
+
         if (d == 0)
             return 0;
 
@@ -55,10 +60,8 @@ public class HeronMethod extends Equation implements ResultPrint<HeronMethod> {
         } else {
 
             if (delta > 0) {
-
                 t1 = ((-1.0)* inputData.elementAt(1) - pdelta) / (2.0 *  inputData.elementAt(0));
                 t2 = ((-1.0)* inputData.elementAt(1) + pdelta) / (2.0 *  inputData.elementAt(0));
-
                 addReplacement(t1, err);
                 addReplacement(t2, err);
             } else if (delta < 0) {

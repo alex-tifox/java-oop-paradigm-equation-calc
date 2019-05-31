@@ -46,12 +46,6 @@ public abstract class Equation {
         return inputData.elementAt(1) * inputData.elementAt(1) - 4 * inputData.elementAt(0) * inputData.elementAt(2);
     }
 
-    public abstract void setErr(double err);
-
-    public abstract void calculateRoots();
-
-
-
     protected double[] addEquationRoot() {
         boolean flag = false;
         int sr = 0;
@@ -91,6 +85,8 @@ public abstract class Equation {
             return new double[]{rr, ru, 0};
     }
 
+    public abstract void calculateRoots();
+
     public abstract double getPdelta();
     public abstract double getDelta();
 
@@ -103,4 +99,7 @@ public abstract class Equation {
     public abstract void setRr(double rr);
     public abstract void setSu(double su);
     public abstract void setRu(double ru);
+    public abstract void setErr(double err);
+
+    public abstract double getSqrt(double d, double err);
 }

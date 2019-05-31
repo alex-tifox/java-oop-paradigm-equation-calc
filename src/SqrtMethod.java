@@ -10,6 +10,11 @@ public class SqrtMethod extends Equation implements ResultPrint<SqrtMethod> {
     SqrtMethod(){}
 
     @Override
+    public double getSqrt(double d, double err) {
+        return 0;
+    }
+
+    @Override
     public void calculateRoots() {
 
         double t1, t2, t1r, t2r, t1u, t2u;

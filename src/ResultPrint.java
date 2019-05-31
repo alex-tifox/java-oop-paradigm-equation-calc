@@ -1,4 +1,3 @@
-import com.vm.jcomplex.Complex;
 
 import java.util.Vector;
 
@@ -7,7 +6,8 @@ public interface ResultPrint<T extends Equation> {
     default void printResult(T equationMethod) {
         System.out.print(String.format("\nDelta=%.2f\n", equationMethod.getDelta()));
         double pdelta = equationMethod.getPdelta();
-        System.out.print(String.format("Pdelta=%.2f\n", pdelta));
+        System.out.print(String.format("Pdelta=%.2f\n\n", pdelta));
+
         if (equationMethod.outputData.elementAt(0).getReal() != 0) {
             System.out.print(String.format("%.2f", equationMethod.outputData.elementAt(0).getReal()));
             if (equationMethod.outputData.elementAt(0).getImaginary() != 0) {
@@ -17,6 +17,7 @@ public interface ResultPrint<T extends Equation> {
                     System.out.print(String.format("+(%.2f)i", equationMethod.outputData.elementAt(0).getImaginary()));
                 }
             }
+
         } else {
             if (equationMethod.outputData.elementAt(0).getImaginary() != 0) {
                 if (equationMethod.outputData.elementAt(0).getImaginary() > 0) {
@@ -27,6 +28,7 @@ public interface ResultPrint<T extends Equation> {
             }
         }
         System.out.print("\n");
+
         try {
             if (equationMethod.outputData.elementAt(1).getReal() != 0) {
                 System.out.print(String.format("%.2f", equationMethod.outputData.elementAt(1).getReal()));
@@ -37,6 +39,7 @@ public interface ResultPrint<T extends Equation> {
                         System.out.print(String.format("+(%.2f)i", equationMethod.outputData.elementAt(1).getImaginary()));
                     }
                 }
+
             } else {
                 if (equationMethod.outputData.elementAt(1).getImaginary() != 0) {
                     if (equationMethod.outputData.elementAt(1).getImaginary() > 0) {
@@ -48,6 +51,7 @@ public interface ResultPrint<T extends Equation> {
             }
         } catch (ArrayIndexOutOfBoundsException ignored) {}
         System.out.print("\n");
+
         try {
             if (equationMethod.outputData.elementAt(2).getReal() != 0) {
                 System.out.print(String.format("%.2f", equationMethod.outputData.elementAt(2).getReal()));
@@ -58,6 +62,7 @@ public interface ResultPrint<T extends Equation> {
                         System.out.print(String.format("+(%.2f)i", equationMethod.outputData.elementAt(2).getImaginary()));
                     }
                 }
+
             } else {
                 if (equationMethod.outputData.elementAt(2).getImaginary() != 0) {
                     if (equationMethod.outputData.elementAt(2).getImaginary() > 0) {
@@ -80,6 +85,7 @@ public interface ResultPrint<T extends Equation> {
                         System.out.print(String.format("+(%.2f)i", equationMethod.outputData.elementAt(3).getImaginary()));
                     }
                 }
+
             } else {
                 if (equationMethod.outputData.elementAt(3).getImaginary() != 0) {
                     if (equationMethod.outputData.elementAt(3).getImaginary() > 0) {
@@ -90,6 +96,7 @@ public interface ResultPrint<T extends Equation> {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException ignored) {}
+
         equationMethod.setSr(equationMethod.addEquationRoot()[0]);
         equationMethod.setSu(equationMethod.addEquationRoot()[1]);
         equationMethod.setRr(equationMethod.minusEquationRoot()[0]);
@@ -118,9 +125,6 @@ public interface ResultPrint<T extends Equation> {
             v2.setElementAt(v2Element2, 0);
         }
 
-        for (Complex data : equationMethod.outputData) {
-            System.out.println(data.toString());
-        }
         System.out.println("Iloczyn liczb zespolonych: "+v2.firstElement() +" " +v2.lastElement());
     }
 }
